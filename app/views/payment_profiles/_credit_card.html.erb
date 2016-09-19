@@ -1,0 +1,87 @@
+<%= javascript_include_tag "https://js.stripe.com/v2/" %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <h2 class="text-center">Card Info </h2>
+    <br/>
+    <p class="text-center">You currently have <%= pluralize(!@cards ? 0 : @cards.count, "card") %> on file with us: </p>
+  </div>
+
+  <% if @cards %>
+    <% @cards.each.with_index do |c, i| %>
+      <div id='individual-card-info' class="col-md-10 col-md-offset-1 well">
+
+        <p style="font-size: 10px;">
+          <% if (c.id == @default_card) %>
+            *Default Card*
+          <% else %>
+            <%= link_to 'Set As Default', set_default_card_path(:id => @payment_profile.id, :fingerprint => c.fingerprint), :id => "set_default_card",  :method => 'post' %>
+          <% end %>
+        </p>
+
+        <%= image_tag("credit-card-icon.png", :size => "30x30", alt: "Credit Card Icon") %>
+        <div>
+          <label class="control-label">Expiration Date (MM/YYYY): </label>
+          <br/>
+          <%= c.exp_month %>
+          <span> / </span>
+          <%= c.exp_year %>
+        </div>
+        <label class="control-label">Last 4 Digits: </label>
+        <div class="form-group">
+          **** **** **** <%= c.last4 %>
+        </div>
+
+        <%= link_to 'Remove Card', remove_card_path(:id => @payment_profile.id, :fingerprint => c.fingerprint), :id => "remove_card",  :method => 'post', :data => { :confirm => 'Are you sure you want to remove this card?' } %>
+
+        <% if @cards.count == 1 %>
+          <p style="font-size: 10px;">Removing all cards will place you on our starter plan (which is free).</p>
+        <% end %>
+
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="row">
+  <button type="button" class="col-xs-8 col-xs-offset-2 btn btn-info btn-extra-round" data-toggle="collapse" data-target="#add-credit-card-form">+ Add a card +</button>
+  <br/>
+  <div>
+    <br/>
+    <div id="add-credit-card-form" class="col-md-10 col-md-offset-1 well collapse">
+
+      <%= form_tag(add_card_path, :id => "add_card_form") do %>
+
+        <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 well">
+            <h3 class="text-center">Card Details</h3>
+            <h4 class="text-center payment-errors"></h4>
+            <div class='form-group'>
+                <label class="control-label" for="number">Card Number</label>
+                <input type="text" style="margin: 0 auto; width: 16em;" size="20" data-stripe="number" placeholder="**** **** **** ****" pattern="[\d ]*"/>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label" for="cvc">CVC</label>
+              <input type="text" style="margin: 0 auto; width: 3em;" size="3" data-stripe="cvc" id="cvc" placeholder="***" pattern="\d*"/>
+              <%= image_tag("credit-card-icon.png", :size => "30x30", alt: "Credit Card Icon") %>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label">Exp (MM/YYYY)</label>
+              <br/>
+              <input type="text" size="2" id="exp-month" data-stripe="exp-month" placeholder="MM" pattern="\d*" style="width: 4em"/>
+              <span> / </span>
+              <input type="text" size="4" id="exp-year" data-stripe="exp-year" placeholder="YYYY" pattern="\d*" style="width: 8em"/>
+            </div>
+
+        </div>
+
+        <div class='form-row'>
+          <div class='col-md-12 form-group'>
+            <button class='form-control btn btn-primary submit-button' type='submit'>Submit Card Details</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

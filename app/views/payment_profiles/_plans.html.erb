@@ -1,0 +1,17 @@
+<br/>
+<h3>You are currently subscribed to <%= pluralize(@payment_profile.user.subscriptions ? 1 : 0, "service") %>:</h3>
+<br/>
+
+<% @payment_profile.user.subscriptions.each do |s| %>
+  <%= form_tag(switch_plan_path(@payment_profile.id), class:"well") do %>
+    <p>You are subscribed to the <i><%= s.plan.name %></i></p>
+
+    <%= hidden_field_tag 'from_plan', s.plan.stripe_id %>
+    <%= hidden_field_tag 'stripe_subscription_id', s.stripe_id %>
+    <div class="field">
+      <%= collection_select( nil, :plan_id, Plan.all.order(:amount), :stripe_id, :name, {:selected => s.plan.stripe_id, :prompt => true}, {class: 'form-control'}) %>
+      <%= submit_tag "Switch Plan", class: "btn btn-primary form-control" %>
+    </div>
+  <% end %>
+<% end %>
+<br />

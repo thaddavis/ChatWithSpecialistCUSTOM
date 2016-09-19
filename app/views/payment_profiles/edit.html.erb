@@ -1,0 +1,31 @@
+<h2>Edit Payment Details</h2>
+
+<hr class="col-md-10 col-md-offset-1"></hr>
+
+<div class="row">
+  <ul class="nav nav-tabs">
+    <li role="presentation"><%= link_to "Profile", user_path(current_user) %></li>
+    <li role="presentation" class="active"><%= link_to "Payment", edit_payment_profile_path(current_user.payment_profile.id), 'data-turbolinks': "false" %></li>
+    <li role="presentation"><%= link_to "Billing", payment_profile_path(current_user.payment_profile.id) %></li>
+  </ul>
+
+  <div class="col-md-6 col-md-offset-3">
+
+      <br/>
+      <% if @payment_profile.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h2><%= pluralize(@payment_profile.errors.count, "error") %> occurred:</h2>
+          <ul>
+          <% @payment_profile.errors.full_messages.each do |message, | %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= render partial: 'plans' %>
+      <%= render partial: 'credit_card' %>
+
+  </div>
+
+</div>

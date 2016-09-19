@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Payment Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_profiles.each do |payment_profile| %>
+      <tr>
+        <td><%= link_to 'Show', payment_profile %></td>
+        <td><%= link_to 'Edit', edit_payment_profile_path(payment_profile) %></td>
+        <td><%= link_to 'Destroy', payment_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,26 @@
+.thought {
+  padding: 2px 20px;
+}
+
+.thought-bubble {
+  word-break: break-word;
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  padding: 15px;
+  text-align: center;
+  line-height: 33px;
+  background-color: #fff;
+  border: 8px solid #666;
+  -webkit-border-radius: 58px;
+  -moz-border-radius: 58px;
+  border-radius: 58px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+}
+
+.chat-text-area {
+  resize: vertical;
+}

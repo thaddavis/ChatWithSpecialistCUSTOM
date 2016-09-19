@@ -1,0 +1,15 @@
+# Logfile created on 2016-09-04 15:53:00 -0400 by logger.rb/54362
+D, [2016-09-04T15:53:00.392116 #31447] DEBUG -- : #<Stripe::Event:0x3ffc6dbb05cc id=evt_18q6fjBProJYO6FDaWmNNNlP> JSON: {
+  "id": "evt_18q6fjBProJYO6FDaWmNNNlP",
+  "object": "event",
+  "api_version": "2016-03-07",
+  "created": 1473018775,
+  "data": {"object":{"id":"sub_98NQWdDbu1SDQl","object":"subscription","application_fee_percent":null,"cancel_at_period_end":false,"canceled_at":null,"created":1473018775,"current_period_end":1475610775,"current_period_start":1473018775,"customer":"cus_98NQcUuMB2lT4l","discount":null,"ended_at":null,"livemode":false,"metadata":{},"plan":{"id":"starter_plan","object":"plan","amount":0,"created":1471365437,"currency":"usd","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"Starter Plan","statement_descriptor":null,"trial_period_days":null},"quantity":1,"start":1473018775,"status":"active","tax_percent":null,"trial_end":null,"trial_start":null}},
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": "req_98NQBjVpGharhh",
+  "type": "customer.subscription.created",
+  "controller": "stripe_event/webhook",
+  "action": "event",
+  "webhook": {"id":"evt_18q6fjBProJYO6FDaWmNNNlP","object":"event","api_version":"2016-03-07","created":1473018775,"data":{"object":{"id":"sub_98NQWdDbu1SDQl","object":"subscription","application_fee_percent":null,"cancel_at_period_end":false,"canceled_at":null,"created":1473018775,"current_period_end":1475610775,"current_period_start":1473018775,"customer":"cus_98NQcUuMB2lT4l","discount":null,"ended_at":null,"livemode":false,"metadata":{},"plan":{"id":"starter_plan","object":"plan","amount":0,"created":1471365437,"currency":"usd","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"Starter Plan","statement_descriptor":null,"trial_period_days":null},"quantity":1,"start":1473018775,"status":"active","tax_percent":null,"trial_end":null,"trial_start":null}},"livemode":false,"pending_webhooks":1,"request":"req_98NQBjVpGharhh","type":"customer.subscription.created"}
+}

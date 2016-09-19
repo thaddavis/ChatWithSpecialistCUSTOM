@@ -1,0 +1,36 @@
+<h2>Edit User Settings</h2>
+
+<hr class="col-md-10 col-md-offset-1"></hr>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><%= link_to "Profile", edit_user_registration_path %></li>
+  <li role="presentation"><%= link_to "Payment", edit_payment_profile_path(current_user.payment_profile.id), 'data-turbolinks': "false" %></li>
+  <li role="presentation"><%= link_to "Billing", payment_profile_path(current_user.payment_profile.id) %></li>
+</ul>
+
+<%= form_for @user do |f| %>
+
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+
+  <%= f.label :username %><br />
+  <%= f.text_field :username, class: 'form-control' %>
+
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name, class: 'form-control' %>
+
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name, class: 'form-control' %>
+
+  <br />
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+<br/>
+<%= link_to 'Change Your Password?', edit_user_registration_path %>
+<br/>
+
+<hr/>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-primary btn-danger' %></p>

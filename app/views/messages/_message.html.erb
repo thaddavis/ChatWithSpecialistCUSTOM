@@ -1,0 +1,13 @@
+<div class="thought">
+
+  <div>
+    <span class="text-muted"><%= message.user.email %> on <%= localize(message.created_at, :format => "%B %dth, %Y at %H:%M:%S UTC") %></span><br>
+    <br/>
+    <p class="thought-bubble" style="border-color: #<%= intToRGB(hashCode(message.user.email)) %>" >
+      <%= message.body %>
+    </p>
+  </div>
+
+  <hr/>
+</div>
+

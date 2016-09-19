@@ -1,0 +1,39 @@
+// Place all the styles related to the PaymentProfiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#remove_card {
+  color: red;
+}
+
+#individual-card-info {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f4f4f4}
+tr:hover {background-color: #f0f0f0}
+
+th.charges {
+    border: 1px solid #000;
+    background-color: #4CAF50;
+    color: white;
+}
+
+th.invoices {
+    border: 1px solid #000;
+    background-color: #4CAFFF;
+    color: white;
+}
+
+input { border: 1px solid black; position:relative; z-index: 1; }

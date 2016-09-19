@@ -1,0 +1,1 @@
+ConnectedList.clear_all

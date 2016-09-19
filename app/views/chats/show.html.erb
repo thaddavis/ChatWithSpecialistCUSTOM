@@ -1,0 +1,19 @@
+<h1><%= @chat.title %></h1>
+
+<div id="messages-parent">
+  <div id="messages" data-chat-id="<%= @chat.id %>">
+
+    <%= render @chat.messages %>
+  </div>
+</div>
+
+<%= form_for @message, url: '#' do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, class: 'form-control chat-text-area'%>
+    <small class="text-muted">From 2 to 1000 characters</small>
+  </div>
+
+  <%= f.submit "Post", class: 'btn btn-primary btn-lg' %>
+<% end %>
+
+

@@ -1,0 +1,15 @@
+# Logfile created on 2016-09-04 11:09:39 -0400 by logger.rb/54362
+D, [2016-09-04T11:09:39.248781 #28549] DEBUG -- : #<Stripe::Event:0x3fe4c90c8be8 id=evt_18q2FQBProJYO6FD1weC82L7> JSON: {
+  "id": "evt_18q2FQBProJYO6FD1weC82L7",
+  "object": "event",
+  "api_version": "2016-03-07",
+  "created": 1473001768,
+  "data": {"object":{"id":"cus_98IrNHkiHOfCqJ","object":"customer","account_balance":0,"created":1473001768,"currency":"usd","default_source":null,"delinquent":false,"description":null,"discount":null,"email":"n@n.com","livemode":false,"metadata":{},"shipping":null,"sources":{"object":"list","data":[],"has_more":false,"total_count":0,"url":"/v1/customers/cus_98IrNHkiHOfCqJ/sources"},"subscriptions":{"object":"list","data":[{"id":"sub_98IrMQ5dG6zSSS","object":"subscription","application_fee_percent":null,"cancel_at_period_end":false,"canceled_at":null,"created":1473001768,"current_period_end":1475593768,"current_period_start":1473001768,"customer":"cus_98IrNHkiHOfCqJ","discount":null,"ended_at":null,"livemode":false,"metadata":{},"plan":{"id":"starter_plan","object":"plan","amount":0,"created":1471365437,"currency":"usd","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"Starter Plan","statement_descriptor":null,"trial_period_days":null},"quantity":1,"start":1473001768,"status":"active","tax_percent":null,"trial_end":null,"trial_start":null}],"has_more":false,"total_count":1,"url":"/v1/customers/cus_98IrNHkiHOfCqJ/subscriptions"}}},
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": "req_98IrBI184qtA1i",
+  "type": "customer.created",
+  "controller": "stripe_event/webhook",
+  "action": "event",
+  "webhook": {"id":"evt_18q2FQBProJYO6FD1weC82L7","object":"event","api_version":"2016-03-07","created":1473001768,"data":{"object":{"id":"cus_98IrNHkiHOfCqJ","object":"customer","account_balance":0,"created":1473001768,"currency":"usd","default_source":null,"delinquent":false,"description":null,"discount":null,"email":"n@n.com","livemode":false,"metadata":{},"shipping":null,"sources":{"object":"list","data":[],"has_more":false,"total_count":0,"url":"/v1/customers/cus_98IrNHkiHOfCqJ/sources"},"subscriptions":{"object":"list","data":[{"id":"sub_98IrMQ5dG6zSSS","object":"subscription","application_fee_percent":null,"cancel_at_period_end":false,"canceled_at":null,"created":1473001768,"current_period_end":1475593768,"current_period_start":1473001768,"customer":"cus_98IrNHkiHOfCqJ","discount":null,"ended_at":null,"livemode":false,"metadata":{},"plan":{"id":"starter_plan","object":"plan","amount":0,"created":1471365437,"currency":"usd","interval":"month","interval_count":1,"livemode":false,"metadata":{},"name":"Starter Plan","statement_descriptor":null,"trial_period_days":null},"quantity":1,"start":1473001768,"status":"active","tax_percent":null,"trial_end":null,"trial_start":null}],"has_more":false,"total_count":1,"url":"/v1/customers/cus_98IrNHkiHOfCqJ/subscriptions"}}},"livemode":false,"pending_webhooks":1,"request":"req_98IrBI184qtA1i","type":"customer.created"}
+}

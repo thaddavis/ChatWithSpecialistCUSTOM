@@ -1,0 +1,3 @@
+class Appearance < ApplicationRecord
+
+end

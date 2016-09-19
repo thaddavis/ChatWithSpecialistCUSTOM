@@ -1,0 +1,17 @@
+<div class="container">
+
+  <div id="plan_div" class="col-xs-offset-1 col-xs-10 well">
+    Change Your Plan:
+    <h3 class="text-center">Plan</h3>
+
+    <% @plans.each.with_index do |p, i| %>
+      <div class="form-group well col-sm-4">
+        <label class="form-check-label">
+          <input class="radio-inline" type="radio" name="plan" id="<%= p.id %>" value="<%= p.stripe_id %>" <%= "checked" if i == 0 %> >
+            <%=raw p.description %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+
+</div>
