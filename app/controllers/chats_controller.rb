@@ -23,6 +23,10 @@ class ChatsController < ApplicationController
     @message = Message.new
   end
 
+  def showChatsWithMessageCounts
+    @chats = Chat.all
+  end
+
   private
 
   def chat_params

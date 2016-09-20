@@ -6,6 +6,10 @@ class DashboardsController < ApplicationController
 
   def show
     authorize :dashboard, :show?
+
+    @num_of_chats = Chat.all.count
+    @num_of_comments = Message.all.count
+
   end
 
 end

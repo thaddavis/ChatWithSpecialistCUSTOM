@@ -1,13 +1,33 @@
 <% connected_users.each do |ii| %>
-  <% debugger %>
   <div class="row msg_container base_receive">
-      <div class="col-md-2 col-xs-2 avatar">
-          <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+
+      <div class="col-md-2 col-xs-2">
+        <div>
+          <div class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-cog"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+          </div>
+          <ul class="dropdown-menu" role="menu">
+              <!-- <li><a href="#"><span class="fa fa-fw fa-hand-peace-o"></span> Away </a></li> -->
+              <!-- <li><a href="/chats"><span class="fa fa-fw fa-comments"></span> View Chats </a></li> -->
+            <li>
+              <%= link_to( chats_path ) do %>
+                <span class="fa fa-fw fa-comments"></span> View Chats
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <div class="col-md-10 col-xs-10">
           <div class="messages msg_receive">
-              <p><%= ii[:email] %> appeared: <%= localize(ii[:last_sign_in_at], :format => "%H:%M:%S UTC") %></p>
+            <!-- <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class="avatar img-responsive "> -->
+            <p>
+              <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
+              <i><%= ii[:email] %></i> appeared: <%= localize(ii[:last_sign_in_at], :format => "%H:%M:%S UTC") %>
+            </p>
           </div>
       </div>
+
   </div>
 <% end %>

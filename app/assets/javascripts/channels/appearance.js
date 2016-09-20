@@ -7,7 +7,7 @@
 
     if ($('#appearances').length > 0) {
 
-      return App.global_appearance = App.cable.subscriptions.create({
+      App.global_appearance = App.cable.subscriptions.create({
           channel: "AppearanceChannel"
         }, {
           connected: function() {
@@ -38,3 +38,6 @@
   });
 
 }).call(this);
+
+
+

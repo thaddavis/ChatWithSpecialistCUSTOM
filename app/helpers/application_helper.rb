@@ -22,19 +22,17 @@ module ApplicationHelper
     return (c)
   end
 
-#   function hashCode(str) { // java String#hashCode
-#     var hash = 0;
-#     for (var i = 0; i < str.length; i++) {
-#        hash = str.charCodeAt(i) + ((hash << 5) - hash);
-#     }
-#     return hash;
-# }
-# function intToRGB(i){
-#     var c = (i & 0x00FFFFFF)
-#         .toString(16)
-#         .toUpperCase();
+  def ConnectedUsersForDisplay(users)
+    returnArray = []
 
-#     return "00000".substring(0, 6 - c.length) + c;
-# }
+    users.each do |i|
+      user_hash = Hash.new
+      user = User.find(i)
+      user_hash[:email] = user.email
+      user_hash[:last_sign_in_at] = user.last_sign_in_at
+      returnArray << user_hash
+    end
+    returnArray
+  end
 
 end
