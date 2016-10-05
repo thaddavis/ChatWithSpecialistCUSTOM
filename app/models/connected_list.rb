@@ -2,7 +2,9 @@ class ConnectedList
   CONNECTED_EMAILS = 'connected_emails'
 
   def self.redis
-    @redis ||= Redis.new(url: "redis://localhost:6379/cable")
+    #@redis ||= Redis.new(url: "redis://localhost:6379/cable")
+    @redis ||= Redis.new(url: "redis://redistogo:dfc085ee6a422a8b33171254c32bf7df@sculpin.redistogo.com:10151/cable")
+
     #::Redis.new(url: ActionCableConfig[:url])
   end
 
