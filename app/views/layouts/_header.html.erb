@@ -11,15 +11,36 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-
-      </ul>
       <ul class="nav navbar-nav navbar-right">
 
 
         <% if user_signed_in? %>
+          <ul class="nav navbar-right top-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <%= link_to( dashboard_path ) do %>
+                              <i class="fa fa-fw fa-dashboard"></i> Dashboard
+                          <% end %>
+                      </li>
+                      <li>
+                          <%= link_to( user_path(current_user) ) do %>
+                              <i class="fa fa-fw fa-gear"></i> Settings
+                          <% end %>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                          <%= link_to( destroy_user_session_path, method: "delete" ) do %>
+                              <i class="fa fa-fw fa-power-off"></i> Log Out
+                          <% end %>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+
           <!-- <li><%= link_to "Users", users_path %></li> -->
-          <li class="dropdown">
+          <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= current_user.email %> <b class="caret"></b>
             </a>
@@ -41,7 +62,7 @@
                     <% end %>
                 </li>
             </ul>
-          </li>
+          </li> -->
         <% else %>
           <li><%= link_to "Log in", user_session_path %></li>
         <% end %>
