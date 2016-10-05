@@ -1,7 +1,6 @@
 class CreatePlan
   def self.call(options={})
 
-    binding.pry
     # begin
     #   plan = Stripe::Plan.retrieve(options[:stripe_id])
     #   plan.delete if !plan.nil?
