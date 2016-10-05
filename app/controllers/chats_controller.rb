@@ -1,5 +1,7 @@
 class ChatsController < ApplicationController
 
+  layout "user_dashboard_layout"
+
   def index
     @chats = Chat.all
   end

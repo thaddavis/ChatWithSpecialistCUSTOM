@@ -5,8 +5,6 @@ class StaticPagesController < ApplicationController
   def home
     if (current_user)
       redirect_to dashboard_path
-    else
-      authenticate_user!
     end
   end
 

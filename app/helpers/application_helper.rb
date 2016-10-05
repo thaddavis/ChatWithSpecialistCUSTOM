@@ -25,11 +25,13 @@ module ApplicationHelper
   def ConnectedUsersForDisplay(users)
     returnArray = []
 
+
+
     users.each do |i|
       user_hash = Hash.new
       user = User.find_by_email(i)
 
-
+      debugger
       user_hash[:email] = user.email
       user_hash[:last_sign_in_at] = user.last_sign_in_at
       user_hash[:status] = ConnectedList.retrieve_status(user.email)
@@ -47,6 +49,8 @@ module ApplicationHelper
     if current_user && current_user.timedout?(current_user.current_sign_in_at)
       sign_out(current_user)
     end
+
+    debugger
 
     ActionCable.server.broadcast "appearances_channel",
                                message_type: "subscribed",

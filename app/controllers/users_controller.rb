@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   after_action :verify_authorized
 
+  layout "user_dashboard_layout"
+
   def show
     @user = User.find(params[:id])
     authorize @user
