@@ -5,6 +5,15 @@
 
 /* mixins, variables, etc. */
 
+
+.dropdown-menu {
+  position: inherit;
+}
+
+#dropdown-menu {
+  position: absolute;
+}
+
 $gray-medium-light: #eaeaea;
 
 @mixin box_sizing {

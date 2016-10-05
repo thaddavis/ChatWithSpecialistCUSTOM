@@ -1,5 +1,7 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
+    include ApplicationHelper
+
     identified_by :current_user
 
     def connect
@@ -10,11 +12,15 @@ module ApplicationCable
     protected
 
     def find_verified_user # this checks whether a user is authenticated with devise
-      if verified_user = env['warden'].user
-        verified_user
-      else
-        debugger
-        reject_unauthorized_connection
+      begin
+        if verified_user = env['warden'].user
+          verified_user
+        else
+
+          reject_unauthorized_connection
+        end
+      rescue
+
       end
     end
   end

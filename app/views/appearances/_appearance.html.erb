@@ -1,33 +1,48 @@
-<% connected_users.each do |ii| %>
-  <div class="row msg_container base_receive">
+<div class="base_all">
+  <% connected_users.each do |ii| %>
 
-      <div class="col-md-2 col-xs-2">
-        <div>
-          <div class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-cog"></span>
-              <span class="sr-only">Toggle Dropdown</span>
+      <div class="row msg_container base_receive" user_name="<%= ii[:email] %>">
+
+          <% if ii[:status] == "Online" %>
+            <div class="col-md-2 col-xs-2" style="z-index: 99;">
+              <div>
+                <div class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </div>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <%= link_to( chats_path ) do %>
+                      <span class="fa fa-fw fa-comments"></span> View Chats
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="col-md-10 col-xs-10">
+              <div class="messages msg_receive">
+                <!-- <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class="avatar img-responsive "> -->
+                <p>
+
+                  <% if ii[:status] == "Online" %>
+                    <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
+                  <% end %>
+
+                  <i><%= ii[:email] %></i> appeared: <%= localize(ii[:last_sign_in_at], :format => "%H:%M:%S UTC") %>
+                </p>
+              </div>
           </div>
-          <ul class="dropdown-menu" role="menu">
-              <!-- <li><a href="#"><span class="fa fa-fw fa-hand-peace-o"></span> Away </a></li> -->
-              <!-- <li><a href="/chats"><span class="fa fa-fw fa-comments"></span> View Chats </a></li> -->
-            <li>
-              <%= link_to( chats_path ) do %>
-                <span class="fa fa-fw fa-comments"></span> View Chats
-              <% end %>
-            </li>
-          </ul>
-        </div>
+
       </div>
 
-      <div class="col-md-10 col-xs-10">
-          <div class="messages msg_receive">
-            <!-- <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class="avatar img-responsive "> -->
-            <p>
-              <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
-              <i><%= ii[:email] %></i> appeared: <%= localize(ii[:last_sign_in_at], :format => "%H:%M:%S UTC") %>
-            </p>
-          </div>
-      </div>
+  <% end %>
+</div>
 
-  </div>
-<% end %>
+<script type="text/javascript">
+
+  var appearances_current_user_container = $('#appearances .current_user');
+  $('.msg_container_base').find('div[user_name="' + appearances_current_user_container.text() + '"]').css({ 'display': "none" });
+
+</script>

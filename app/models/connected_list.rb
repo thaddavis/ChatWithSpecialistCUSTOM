@@ -1,29 +1,44 @@
 class ConnectedList
-  REDIS_KEY = 'connected_nodes'
+  CONNECTED_EMAILS = 'connected_emails'
 
   def self.redis
     @redis ||= Redis.new(url: "redis://localhost:6379/cable")
     #::Redis.new(url: ActionCableConfig[:url])
   end
 
-  # I think this is the method you want.
   def self.all
-    redis.smembers(REDIS_KEY)
+    redis.zrange(CONNECTED_EMAILS, 0, -1)
+  end
+
+  def self.add(email)
+    redis.zadd(CONNECTED_EMAILS, 1, email)
+    if redis.hgetall("appearance|#{email}")["status"]
+    else
+      redis.hset("appearance|#{email}", "status", "Online")
+    end
+  end
+
+  def self.remove(email)
+    redis.zrem(CONNECTED_EMAILS, email)
+  end
+
+  def self.change_status(email, status)
+    redis.hset("appearance|#{email}", "status", status)
+  end
+
+  def self.retrieve_status(email)
+    redis.hgetall("appearance|#{email}")["status"]
+  end
+
+  def self.delete_status(email)
+    redis.del("appearance|#{email}")
   end
 
   def self.clear_all
-    redis.del(REDIS_KEY)
+    redis.del(CONNECTED_EMAILS)
   end
 
-  def self.add(uid)
-    redis.sadd(REDIS_KEY, uid)
-  end
-
-  def self.include?(uid)
-    redis.sismember(REDIS_KEY, uid)
-  end
-
-  def self.remove(uid)
-    redis.srem(REDIS_KEY, uid)
-  end
+  # def self.include?(uid)
+  #   redis.sismember(CONNECTED_EMAILS_KEY, uid)
+  # end
 end

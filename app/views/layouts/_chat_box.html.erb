@@ -1,13 +1,35 @@
-<div class="fixedbox" id="appearances">
-  <div class="fixedbox-panel fixedbox-panel-default">
-
-    <div class="fixedbox-heading top-bar">
+<div class="fixedbox" id="appearances" style="z-index: 99;">
+  <div class="current_user" style="display: none"><%= current_user.email %></div>
+  <div class="fixedbox-panel fixedbox-panel-default" >
+    <div class="fixedbox-heading top-bar" style="z-index: 99; overflow: hidden;">
       <div class="col-md-8 col-xs-8">
-        <h3 class="panel-title"><span class="glyphicon"></span> Active Users </h3>
+        <h3 class="panel-title" style="float: right;"><span class="glyphicon"></span> View Active Users </h3>
       </div>
       <div class="col-md-4 col-xs-4" style="text-align: right;">
         <a href="javascript:void(0)"><span id="minim_chat_window" class="glyphicon glyphicon-plus icon_minim panel-collapsed"></span></a>
       </div>
+      Change Status:
+
+      <select class="selectpicker">
+        <option
+          <%=
+            if ConnectedList.retrieve_status(current_user.email) == "Online"
+              "selected"
+            end
+          %>
+        >
+          <span class="fa fa-comments-o"></span>&nbsp;Online
+        </option>
+        <option
+          <%=
+            if ConnectedList.retrieve_status(current_user.email) == "Offline"
+              "selected"
+            end
+          %>
+        >
+          <span class="fa fa-map-marker"></span>&nbsp;Offline
+        </option>
+      </select>
     </div>
 
     <div class="fixedbox-body msg_container_base" style="display: none">
