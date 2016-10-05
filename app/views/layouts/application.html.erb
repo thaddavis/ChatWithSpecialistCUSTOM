@@ -9,14 +9,18 @@
   </head>
 
   <body class="container">
-    <%= render 'layouts/header' %>
-    <%= render 'layouts/flash_messages' %>
-    <%= yield %>
+    <div id="wrapper">
+      <div id="page-wrapper">
+        <%= render 'layouts/header' %>
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
 
-    <% if current_user %>
-      <%= render 'layouts/chat_box' %>
-    <% end %>
+        <% if current_user %>
+          <%= render 'layouts/chat_box' %>
+        <% end %>
 
-    <%= render 'layouts/footer' %>
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
   </body>
 </html>
