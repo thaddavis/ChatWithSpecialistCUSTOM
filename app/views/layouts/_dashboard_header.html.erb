@@ -13,24 +13,28 @@
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
+            <% if user_signed_in? %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
+            <% end %>
             <ul class="dropdown-menu">
-                <li>
-                    <%= link_to( dashboard_path ) do %>
-                        <i class="fa fa-fw fa-dashboard"></i> Dashboard
-                    <% end %>
-                </li>
-                <li>
-                    <%= link_to( user_path(current_user) ) do %>
-                        <i class="fa fa-fw fa-gear"></i> Settings
-                    <% end %>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <%= link_to( destroy_user_session_path, method: "delete" ) do %>
-                        <i class="fa fa-fw fa-power-off"></i> Log Out
-                    <% end %>
-                </li>
+                <% if user_signed_in? %>
+                    <li>
+                        <%= link_to( dashboard_path ) do %>
+                            <i class="fa fa-fw fa-dashboard"></i> Dashboard
+                        <% end %>
+                    </li>
+                    <li>
+                        <%= link_to( user_path(current_user) ) do %>
+                            <i class="fa fa-fw fa-gear"></i> Settings
+                        <% end %>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <%= link_to( destroy_user_session_path, method: "delete" ) do %>
+                            <i class="fa fa-fw fa-power-off"></i> Log Out
+                        <% end %>
+                    </li>
+                <% end %>
             </ul>
         </li>
     </ul>
@@ -39,11 +43,15 @@
         <ul class="nav navbar-nav side-nav">
 
             <li class="active">
-                <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                <%= link_to( dashboard_path ) do %>
+                    <i class="fa fa-fw fa-dashboard"></i> Dashboard
+                <% end %>
             </li>
 
             <li>
-                <a href="chats"><i class="fa fa-fw fa-bar-chart-o"></i> Chats</a>
+                <%= link_to( chats_path ) do %>
+                    <i class="fa fa-fw fa-bar-chart-o"></i> Chats
+                <% end %>
             </li>
 
         </ul>

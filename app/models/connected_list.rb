@@ -22,6 +22,7 @@ class ConnectedList
 
   def self.remove(email)
     redis.zrem(CONNECTED_EMAILS, email)
+    redis.del("appearance|#{email}")
   end
 
   def self.change_status(email, status)
