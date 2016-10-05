@@ -29,15 +29,13 @@ module ApplicationHelper
       user_hash = Hash.new
       user = User.find_by_email(i)
 
-      if user
 
+      user_hash[:email] = user.email
+      user_hash[:last_sign_in_at] = user.last_sign_in_at
+      user_hash[:status] = ConnectedList.retrieve_status(user.email)
 
-        user_hash[:email] = user.email
-        user_hash[:last_sign_in_at] = user.last_sign_in_at
-        user_hash[:status] = ConnectedList.retrieve_status(user.email)
+      returnArray << user_hash
 
-        returnArray << user_hash
-      end
 
 
     end
