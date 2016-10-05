@@ -23,7 +23,7 @@ $(document).on('focus', '.panel-footer input.chat_input', function (e) {
 $(document).on('click', '#new_chat', function (e) {
     var size = $( ".chat-window:last-child" ).css("margin-left");
      size_total = parseInt(size) + 400;
-    alert(size_total);
+    //alert(size_total);
     var clone = $( "#chat_window_1" ).clone().appendTo( ".container" );
     clone.css("margin-left", size_total);
 });
