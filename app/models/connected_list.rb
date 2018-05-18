@@ -3,7 +3,7 @@ class ConnectedList
 
   def self.redis
     #@redis ||= Redis.new(url: "redis://localhost:6379/cable")
-    @redis ||= Redis.new(url: "redis://redistogo:dfc085ee6a422a8b33171254c32bf7df@sculpin.redistogo.com:10151/cable")
+    @redis ||= Redis.new(url: "redis://redistogo:74de9c48e7d091fcff64ebbb4a856002@cod.redistogo.com:9645/cable")
 
     #::Redis.new(url: ActionCableConfig[:url])
   end
